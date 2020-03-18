@@ -15,7 +15,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void testCakeName() {
+    public void testCakeName() {
         items[0] = new Item("Conjured Mana Cake", 1, 2) ;
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -37,5 +37,11 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(2, app.items[0].quality);
     }
-
+    @Test
+    public void testQualityBackstagePasesQuality(){
+        items[0] = new Item("Backstage passes to a TAFKAL80ETC concert", 1, 10);
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(13, app.items[0].quality);
+    }
 }
