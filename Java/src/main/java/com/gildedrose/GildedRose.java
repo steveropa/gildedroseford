@@ -7,22 +7,34 @@ class GildedRose {
         this.items = items;
     }
 
+    private Item determineItem(Item item) {
+        Item currItem = item;
+        switch(currItem.name){
+            case "Conjured Mana Cake": {
+                if (currItem.quality > 0) {
+                currItem.quality = currItem.quality - 2;
+            }}
+
+        }
+        return currItem;
+    }
+
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             Item currItem = items[i];
-            if (currItem.name.equals("Conjured Mana Cake")) {
-                if (currItem.quality > 0) {
-                    currItem.quality = currItem.quality - 2;
-                }
-            } else {
+           
+            
+
+                currItem = determineItem(currItem);
+
                 if (!currItem.name.equals("Aged Brie")
                         && !currItem.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                     if (currItem.quality > 0) {
-                        if (!currItem.name.equals("Sulfuras, Hand of Ragnaros")) {
-                            currItem.quality = currItem.quality - 1;
+                        if (!currItem.name.equals("Sulfuras, Hand of Ragnaros") && !currItem.name.equals("Conjured Mana Cake")) {
+                            decrementQuality(currItem);
                         }
                     }
-                } else {
+                } else if (!currItem.name.equals("Conjured Mana Cake")){
                     if (currItem.quality < 50) {
                         currItem.quality = currItem.quality + 1;
 
@@ -37,7 +49,7 @@ class GildedRose {
                         }
                     }
                 }
-            }
+            
             if (!currItem.name.equals("Sulfuras, Hand of Ragnaros")) {
                 currItem.sellIn = currItem.sellIn - 1;
             }
@@ -47,7 +59,7 @@ class GildedRose {
                     if (!currItem.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (currItem.quality > 0) {
                             if (!currItem.name.equals("Sulfuras, Hand of Ragnaros")) {
-                                currItem.quality = currItem.quality - 1;
+                                decrementQuality(currItem);
                             }
                         }
                     } else {
@@ -58,6 +70,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private void decrementQuality(Item currItem) {
+        currItem.quality = currItem.quality - 1;
     }
 
     private void checkQuality(Item currItem) {
