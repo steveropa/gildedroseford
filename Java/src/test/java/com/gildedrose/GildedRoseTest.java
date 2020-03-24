@@ -16,7 +16,7 @@ class GildedRoseTest {
 
     @Test
     public void testCakeName() {
-        items[0] = new Item("Conjured Mana Cake", 1, 2) ;
+        items[0] = new ConjuredItem("Conjured Mana Cake", 1, 2) ;
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals("Conjured Mana Cake", app.items[0].name);
@@ -24,7 +24,7 @@ class GildedRoseTest {
 
     @Test
     public void testCakeSellin() {
-        items[0] = new Item("Conjured Mana Cake", 1, 2);
+        items[0] = new ConjuredItem("Conjured Mana Cake", 1, 2);
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0,app.items[0].sellIn);
@@ -32,7 +32,7 @@ class GildedRoseTest {
 
     @Test
     public void testCakeQuality() {
-        items[0] = new Item("Conjured Mana Cake", 1, 4);
+        items[0] = new ConjuredItem("Conjured Mana Cake", 1, 4);
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(2, app.items[0].quality);
