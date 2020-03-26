@@ -7,7 +7,7 @@ public class IntelligentItem extends Item{
         super(name, sellIn, quality);
     }
 
-    public void checkQuality(Item item){
+    public void checkQuality(){
 
     }
 }

@@ -7,13 +7,13 @@ class GildedRose {
         this.items = items;
     }
 
-    private Item determineItem(final Item item) {
-        final Item currItem = item;
+    private Item determineItem(Item item) {
+        Item currItem = item;
         switch (currItem.name) {
             case "Conjured Mana Cake": {
-                if (currItem.quality > 0) {
-                    currItem.quality = currItem.quality - 2;
-                }
+               ConjuredItem conjuredItem =  new ConjuredItem(currItem.name, currItem.sellIn, currItem.quality);
+               conjuredItem.checkQuality();
+               return conjuredItem;
             }
 
         }
